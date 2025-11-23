@@ -29,6 +29,6 @@
     ".next/types/**/*.ts",
     ".next/dev/types/**/*.ts",
     "**/*.mts"
-  ],
+, "Components/RoundUpSettings.jsx", "Components/statsoverview.jsx", "Components/TargetPieChart.jsx", "Components/progresschart.jsx", "Components/header.jsx", "Components/ActiveChallenges.jsx", "Components/weeklyinsight.jsx"  ],
   "exclude": ["node_modules"]
 }

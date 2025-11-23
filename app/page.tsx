@@ -1,65 +1,137 @@
-import Image from "next/image";
+"use client";
 
-export default function Home() {
+import { useState } from "react";
+import Header from "../Components/header";
+import StatsOverview from "../Components/statsoverview";
+import WeeklyNotification from "../Components/weeklyinsight";
+import ProgressChart from "../Components/progresschart";
+import TargetPieChart from "../Components/TargetPieChart";
+import RoundUpSettings from "../Components/RoundUpSettings.jsx";
+import RecentTransactions from "../Components/RecentTransaction";
+import ActiveChallenges from "../Components/ActiveChallenges";
+import BadgesAchievements from "../Components/BadgesAchievments";
+import CTASection from "../Components/CTASection";
+
+export default function AutoRoundUpGold() {
+  const [user] = useState({
+    name: "Andi Pratama",
+    level: "Gold Explorer",
+    totalGold: 2.47,
+    totalValue: 3456780,
+    currentStreak: 23,
+    monthlyTarget: 5.0,
+    badges: ["First Purchase", "Week Warrior", "Social Saver"],
+    roundUpSetting: 10000,
+  });
+
+  const [transactions] = useState([
+    {
+      date: "2024-11-20",
+      merchant: "Indomaret",
+      amount: 47500,
+      roundUp: 2500,
+      goldAdded: 0.001,
+    },
+    {
+      date: "2024-11-19",
+      merchant: "Grab Food",
+      amount: 83200,
+      roundUp: 6800,
+      goldAdded: 0.003,
+    },
+    {
+      date: "2024-11-18",
+      merchant: "Shopee",
+      amount: 156700,
+      roundUp: 3300,
+      goldAdded: 0.002,
+    },
+    {
+      date: "2024-11-17",
+      merchant: "Starbucks",
+      amount: 65000,
+      roundUp: 5000,
+      goldAdded: 0.002,
+    },
+  ]);
+
+  const [goldPriceHistory] = useState([
+    { week: "Minggu 1", gold: 0.3, value: 420000 },
+    { week: "Minggu 2", gold: 0.7, value: 980000 },
+    { week: "Minggu 3", gold: 1.2, value: 1680000 },
+    { week: "Minggu 4", gold: 2.0, value: 2800000 },
+    { week: "Minggu 5", gold: 2.47, value: 3456780 },
+  ]);
+
+  const [challenges] = useState([
+    {
+      name: "30 Hari Beruntun",
+      progress: 23,
+      target: 30,
+      reward: "0.01 gram emas",
+      active: true,
+    },
+    {
+      name: "Nabung Bareng Keluarga",
+      progress: 3,
+      target: 5,
+      reward: "Badge spesial",
+      active: true,
+    },
+    {
+      name: "Weekly Spender",
+      progress: 7,
+      target: 7,
+      reward: "Extra 0.005 gram",
+      completed: true,
+    },
+  ]);
+
+  const [partnerApps] = useState([
+    { name: "BCA Mobile", connected: true, icon: "💙" },
+    { name: "GoPay", connected: true, icon: "🟢" },
+    { name: "DANA", connected: false, icon: "🔵" },
+    { name: "OVO", connected: false, icon: "🟣" },
+    { name: "Blu by BCA", connected: true, icon: "🔷" },
+    { name: "LinkAja", connected: false, icon: "🔴" },
+  ]);
+
+  const roundUpOptions = [5000, 10000, 20000, 50000];
+
   return (
-    <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
+    <div className="min-h-screen bg-gradient-to-br from-yellow-50 via-white to-yellow-100">
+      <Header user={user} />
+
+      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <StatsOverview user={user} />
+        <WeeklyNotification user={user} />
+
+        <div className="grid lg:grid-cols-2 gap-8 mb-8">
+          <ProgressChart goldPriceHistory={goldPriceHistory} user={user} />
+          <TargetPieChart user={user} />
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+
+        <RoundUpSettings
+          user={user}
+          roundUpOptions={roundUpOptions}
+          partnerApps={partnerApps}
+        />
+
+        <div className="mt-8">
+          <RecentTransactions transactions={transactions} />
+        </div>
+
+        <div className="mt-8 grid lg:grid-cols-2 gap-8">
+          <ActiveChallenges challenges={challenges} />
+          <BadgesAchievements user={user} />
+        </div>
+
+        <div className="mt-8">
+          <CTASection />
         </div>
       </main>
     </div>
   );
 }
+
+
