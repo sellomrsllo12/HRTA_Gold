@@ -36,19 +36,6 @@ export default function RoundUpSettings({ user, roundUpOptions } ) {
           <label className="block text-sm font-medium text-gray-700 mb-3">
             Connected Apps
           </label>
-          <div className="space-y-2">
-            {partnerApps.map((app) => (
-              <div
-                key={app.name}
-                className="flex items-center justify-between p-3 rounded-lg border border-gray-200 text-black"
-              >
-                <div className="flex items-center gap-3">
-                  <span className="text-xl">{app.icon}</span>
-                  <span className="font-medium">{app.name}</span>
-                </div>
-              </div>
-            ))}
-          </div>
         </div>
       </div>
     </div>
