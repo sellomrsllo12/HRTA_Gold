@@ -31,12 +31,6 @@ export default function RoundUpSettings({ user, roundUpOptions } ) {
             ))}
           </div>
         </div>
-
-        <div>
-          <label className="block text-sm font-medium text-gray-700 mb-3">
-            Connected Apps
-          </label>
-        </div>
       </div>
     </div>
   );
