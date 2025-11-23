@@ -8,7 +8,7 @@ export default function Header({ user }) {
           <div className="flex items-center gap-3">
             <Sparkles className="w-8 h-8" />
             <div>
-              <h1 className="text-2xl font-bold">HRTA Gold Auto-Save</h1>
+              <h1 className="text-2xl font-bold">HRTA Gold</h1>
               <p className="text-yellow-100 text-sm">
                 Nabung emas otomatis dari belanja harian
               </p>

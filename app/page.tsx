@@ -87,14 +87,6 @@ export default function AutoRoundUpGold() {
     },
   ]);
 
-  const [partnerApps] = useState([
-    { name: "BCA Mobile", connected: true, icon: "💙" },
-    { name: "GoPay", connected: true, icon: "🟢" },
-    { name: "DANA", connected: false, icon: "🔵" },
-    { name: "OVO", connected: false, icon: "🟣" },
-    { name: "Blu by BCA", connected: true, icon: "🔷" },
-    { name: "LinkAja", connected: false, icon: "🔴" },
-  ]);
 
   const roundUpOptions = [5000, 10000, 20000, 50000];
 
@@ -111,12 +103,11 @@ export default function AutoRoundUpGold() {
           <TargetPieChart user={user} />
         </div>
 
+        <div>
         <RoundUpSettings
           user={user}
-          roundUpOptions={roundUpOptions}
-          partnerApps={partnerApps}
-        />
-
+          roundUpOptions={roundUpOptions}/>
+        </div>
         <div className="mt-8">
           <RecentTransactions transactions={transactions} />
         </div>

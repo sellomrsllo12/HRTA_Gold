@@ -1,7 +1,7 @@
 import { Settings } from "lucide-react";
 
 
-export default function RoundUpSettings({ user, roundUpOptions, partnerApps } ) {
+export default function RoundUpSettings({ user, roundUpOptions } ) {
   return (
     <div className="bg-white rounded-2xl p-6 shadow-lg border border-gray-100">
       <div className="flex items-center gap-2 mb-6">
@@ -46,9 +46,6 @@ export default function RoundUpSettings({ user, roundUpOptions, partnerApps } ) 
                   <span className="text-xl">{app.icon}</span>
                   <span className="font-medium">{app.name}</span>
                 </div>
-                <div
-                  className={`w-3 h-3 rounded-full ${app.connected ? "bg-green-500" : "bg-gray-300"}`}
-                ></div>
               </div>
             ))}
           </div>
