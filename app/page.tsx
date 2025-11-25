@@ -12,6 +12,7 @@ import ActiveChallenges from "../Components/ActiveChallenges";
 import BadgesAchievements from "../Components/BadgesAchievments";
 import CTASection from "../Components/CTASection";
 import GoldExpenseTracker from "../Components/TrackerEmas"
+import GoldDailyChart from "../Components/GoldRealtime"
 
 export default function AutoRoundUpGold() {
   const [user] = useState({
@@ -94,10 +95,13 @@ export default function AutoRoundUpGold() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-yellow-50 via-white to-yellow-100">
       <Header user={user} />
-
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         <StatsOverview user={user} />
         <WeeklyNotification user={user} />
+
+         <div className="mb-8">
+          <GoldDailyChart/>
+        </div>
 
         <div className="grid lg:grid-cols-2 gap-8 mb-8">
           <ProgressChart goldPriceHistory={goldPriceHistory} user={user} />
