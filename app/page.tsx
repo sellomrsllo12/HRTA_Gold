@@ -106,7 +106,9 @@ export default function AutoRoundUpGold() {
         <div>
         <RoundUpSettings
           user={user}
-          roundUpOptions={roundUpOptions}/>
+          roundUpOptions={roundUpOptions}
+          onRoundUpChange 
+          />
         </div>
         <div className="mt-8">
           <RecentTransactions transactions={transactions} />
@@ -118,7 +120,7 @@ export default function AutoRoundUpGold() {
         </div>
 
         <div className="mt-8">
-          <CTASection />
+          <CTASection user={user}/>
         </div>
       </main>
     </div>
