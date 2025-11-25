@@ -11,6 +11,7 @@ import RecentTransactions from "../Components/RecentTransaction";
 import ActiveChallenges from "../Components/ActiveChallenges";
 import BadgesAchievements from "../Components/BadgesAchievments";
 import CTASection from "../Components/CTASection";
+import GoldExpenseTracker from "../Components/TrackerEmas"
 
 export default function AutoRoundUpGold() {
   const [user] = useState({
@@ -101,6 +102,9 @@ export default function AutoRoundUpGold() {
         <div className="grid lg:grid-cols-2 gap-8 mb-8">
           <ProgressChart goldPriceHistory={goldPriceHistory} user={user} />
           <TargetPieChart user={user} />
+        </div>
+        <div className="mt-8">
+          <GoldExpenseTracker/>
         </div>
 
         <div>
